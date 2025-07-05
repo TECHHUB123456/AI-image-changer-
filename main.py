@@ -5,6 +5,7 @@ import replicate
 import base64
 import io
 from PIL import Image
+import os
 
 app = FastAPI()
 
@@ -17,7 +18,8 @@ app.add_middleware(
 )
 
 # Replicate API
-client = replicate.Client(api_token="r8_E0qsUXfaFITjq67wSbPLaiWE9jOixMg44MuUU")  # Set in Render ENV in prod
+client = replicate.Client(api_token=os.environ["r8_E0qsUXfaFITjq67wSbPLaiWE9jOixMg44MuUU"])
+
 
 @app.post("/transform/")
 async def transform_image(file: UploadFile = File(...)):
