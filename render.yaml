@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: replicate-fastapi
+    env: python
+    region: oregon
+    buildCommand: ""
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    plan: free
+    envVars:
+      - key: REPLICATE_API_TOKEN
+        value: your_replicate_token_here
